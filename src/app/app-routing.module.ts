@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NewitemComponent } from './pages/newitem/newitem.component';
 
 const routes: Routes = [
   {
@@ -8,9 +9,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'tasklist',
     pathMatch: 'full'
   },
+  {
+    path: 'tasklist',
+    loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
+  },
+
+  /*{path:'new item',component:NewitemComponent}, */ //ruta agregada
+
 ];
 
 @NgModule({
